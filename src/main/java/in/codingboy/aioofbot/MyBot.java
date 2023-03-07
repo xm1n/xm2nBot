@@ -27,9 +27,7 @@ public class MyBot extends TelegramLongPollingBot {
     static String welcomemessage =
             "C 8 марта!\n\n" +
             "Счастья, здоровья, успехов в твоих начинаниях\n" +
-            "Знай, что ты прекрасна! :)\n" +
-            "\n\n" +
-            "Мой ТГ: [ТЫК!](https://t.me/xm1nya_pr)";
+            "Знай, что ты прекрасна! :)\n";
     static String seemessage =
             "Я не смогу прочесть ваше сообщение, поэтому напишите Кирюше в ЛС \uFE0F";
     JSONParser parser =  new JSONParser();
@@ -38,8 +36,17 @@ public class MyBot extends TelegramLongPollingBot {
         SendMessage sendMessage = new SendMessage();
 
         if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("Back") || update.getMessage().getText().equals("/start@xm1nBot"))
-        /*{
-            ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+        {
+            InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
+            List < List < InlineKeyboardButton >> rowsInline = new ArrayList < > ();
+            List < InlineKeyboardButton > rowInline = new ArrayList < > ();
+            rowInline.add(new InlineKeyboardButton().setText("Ссылочка на ТГ").setUrl("https://t.me/xm1nya_pr"));
+            rowsInline.add(rowInline);
+            markupInline.setKeyboard(rowsInline);
+            sendMessage.setReplyMarkup(markupInline);
+        }
+
+            /*ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
             List <KeyboardRow> keyboardRowList = new ArrayList<>();
             KeyboardRow row;
 
