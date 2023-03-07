@@ -87,16 +87,19 @@ public class MyBot extends TelegramLongPollingBot {
             }
             catch (TelegramApiException e) {
                 e.printStackTrace();
+                }
+            if(update.getMessage().getText().equals("")){
+                sendMessage.setText(seemessage);
+                try {
+                    sendMessage.setChatId(update.getMessage().getChatId());
+                    execute(sendMessage);
+                }
+                catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
             }
-            sendMessage.setText(seemessage);
-            try {
-                sendMessage.setChatId(update.getMessage().getChatId());
-                execute(sendMessage);
-            }
-            catch (TelegramApiException e) {
-                e.printStackTrace();
-            }
-        }
+    }
+
        /*else if (update.getMessage().getText().equals("Programming joke \uD83D\uDE01"))
         {
             try
