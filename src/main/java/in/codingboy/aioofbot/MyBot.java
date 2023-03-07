@@ -36,6 +36,23 @@ public class MyBot extends TelegramLongPollingBot {
         SendMessage sendMessage = new SendMessage();
 
         if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("/start@xm1nBot"))
+                sendMessage.setText("Привет "+ update.getMessage().getFrom().getFirstName() + ",\n\n" +welcomemessage);
+            try {
+                sendMessage.setChatId(update.getMessage().getChatId());
+                execute(sendMessage);
+            }
+            catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+        if(update.getMessage().getText().equals("") || update.getMessage().getText().equals("Спасибо")) {
+                sendMessage.setText(seemessage);
+                try {
+                    sendMessage.setChatId(update.getMessage().getChatId());
+                    execute(sendMessage);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+            }
         {
             InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
             List < List < InlineKeyboardButton >> rowsInline = new ArrayList < > ();
@@ -80,25 +97,6 @@ public class MyBot extends TelegramLongPollingBot {
 
             replyKeyboardMarkup.setKeyboard(keyboardRowList);
             sendMessage.setReplyMarkup(replyKeyboardMarkup);*/
-            sendMessage.setText("Привет "+ update.getMessage().getFrom().getFirstName() + " ,\n\n" +welcomemessage);
-            try {
-                sendMessage.setChatId(update.getMessage().getChatId());
-                execute(sendMessage);
-            }
-            catch (TelegramApiException e) {
-                e.printStackTrace();
-                }
-            if(update.getMessage().getText().equals("") || update.getMessage().getText().equals("Спасибо")){
-
-                sendMessage.setText(seemessage);
-                try {
-                    sendMessage.setChatId(update.getMessage().getChatId());
-                    execute(sendMessage);
-                }
-                catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-            }
     }
 
        /*else if (update.getMessage().getText().equals("Programming joke \uD83D\uDE01"))
