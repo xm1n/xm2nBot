@@ -25,18 +25,18 @@ public class MyBot extends TelegramLongPollingBot {
 
     String sendCoronaDataNumbers="";
     static String welcomemessage =
-            "C 8 марта девочки!\n\n" +
-            "Счастья, здоровья, успехов в ваших начинаниях\n" +
-            "Знайте, вы самые лучшие и прекрасные! :)\n" +
+            "C 8 марта!\n\n" +
+            "Счастья, здоровья, успехов в твоих начинаниях\n" +
+            "Знай, что ты прекрасна! :)\n" +
             "\n\n" +
-            "ТГ Кирюши: https://t.me/Novogrudok";
+            "Мой ТГ: https://t.me/Novogrudok";
     JSONParser parser =  new JSONParser();
     @Override
     public void onUpdateReceived(Update update) {
         SendMessage sendMessage = new SendMessage();
 
         if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("Back") || update.getMessage().getText().equals("/start@xm1nBot"))
-        {
+        /*{
             ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
             List <KeyboardRow> keyboardRowList = new ArrayList<>();
             KeyboardRow row;
@@ -70,8 +70,8 @@ public class MyBot extends TelegramLongPollingBot {
             keyboardRowList.add(row);
 
             replyKeyboardMarkup.setKeyboard(keyboardRowList);
-            sendMessage.setReplyMarkup(replyKeyboardMarkup);
-            sendMessage.setText("Hii "+ update.getMessage().getFrom().getFirstName() + " \uD83D\uDE4B\u200D♂️,\n\n" +welcomemessage);
+            sendMessage.setReplyMarkup(replyKeyboardMarkup);*/
+            sendMessage.setText("Привет "+ update.getMessage().getFrom().getFirstName() + " ,\n\n" +welcomemessage);
             try {
                 sendMessage.setChatId(update.getMessage().getChatId());
                 execute(sendMessage);
@@ -79,7 +79,7 @@ public class MyBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
-       else if (update.getMessage().getText().equals("Programming joke \uD83D\uDE01"))
+       /*else if (update.getMessage().getText().equals("Programming joke \uD83D\uDE01"))
         {
             try
             {
@@ -348,7 +348,7 @@ public class MyBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
     private void concateNumbers(String country, String total_cases, String total_recovered, String total_deaths) {
         sendCoronaDataNumbers=sendCoronaDataNumbers+country+total_cases+total_recovered+total_deaths+"\n";
         System.out.println(sendCoronaDataNumbers);
