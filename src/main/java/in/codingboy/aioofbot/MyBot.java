@@ -89,7 +89,14 @@ public class MyBot extends TelegramLongPollingBot {
             catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-            sendMessage.setText("https://w7.pngwing.com/pngs/332/317/png-transparent-cut-flowers-flower-bouquet-floral-design-flower-color-plant-stem-lilium-thumbnail.png")
+            sendMessage.setText("https://w7.pngwing.com/pngs/332/317/png-transparent-cut-flowers-flower-bouquet-floral-design-flower-color-plant-stem-lilium-thumbnail.png");
+            try {
+                sendMessage.setChatId(update.getMessage().getChatId());
+                execute(sendMessage);
+            }
+            catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
         }
        /*else if (update.getMessage().getText().equals("Programming joke \uD83D\uDE01"))
         {
