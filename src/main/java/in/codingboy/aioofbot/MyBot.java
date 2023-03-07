@@ -35,7 +35,7 @@ public class MyBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         SendMessage sendMessage = new SendMessage();
 
-        if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("Back") || update.getMessage().getText().equals("/start@xm1nBot"))
+        if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("/start@xm1nBot"))
         {
             InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
             List < List < InlineKeyboardButton >> rowsInline = new ArrayList < > ();
@@ -88,7 +88,8 @@ public class MyBot extends TelegramLongPollingBot {
             catch (TelegramApiException e) {
                 e.printStackTrace();
                 }
-            if(update.getMessage().getText().equals("")){
+            if(update.getMessage().getText().equals("")) || (update.getMessage().getText().equals("Спасибо")){
+
                 sendMessage.setText(seemessage);
                 try {
                     sendMessage.setChatId(update.getMessage().getChatId());
