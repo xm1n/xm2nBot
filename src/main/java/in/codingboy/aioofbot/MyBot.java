@@ -27,7 +27,7 @@ public class MyBot extends TelegramLongPollingBot {
     static String welcomemessage =
             "C 8 марта!\n\n" +
             "Счастья, здоровья, успехов в твоих начинаниях\n" +
-            "Знай, что ты прекрасна! :)\n";
+            "Знай, что ты прекрасна!\uFE0F :)\n";
     static String seemessage =
             "Я не смогу прочесть ваше сообщение, поэтому напишите Кирюше в ЛС \uFE0F";
     JSONParser parser =  new JSONParser();
@@ -36,30 +36,13 @@ public class MyBot extends TelegramLongPollingBot {
         SendMessage sendMessage = new SendMessage();
 
         if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("/start@xm1nBot"))
-                sendMessage.setText("Привет "+ update.getMessage().getFrom().getFirstName() + ",\n\n" +welcomemessage);
+                sendMessage.setText("Привет "+ update.getMessage().getFrom().getFirstName() + ",\n\n" +welcomemessage + "\n\n" + seemessage + "@xm1nya_pr");
             try {
                 sendMessage.setChatId(update.getMessage().getChatId());
                 execute(sendMessage);
             }
             catch (TelegramApiException e) {
                 e.printStackTrace();
-            }
-        if(update.getMessage().getText().equals("")) {
-                sendMessage.setText(seemessage);
-                try {
-                    sendMessage.setChatId(update.getMessage().getChatId());
-                    execute(sendMessage);
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-            {
-                InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
-                List < List < InlineKeyboardButton >> rowsInline = new ArrayList < > ();
-                List < InlineKeyboardButton > rowInline = new ArrayList < > ();
-                rowInline.add(new InlineKeyboardButton().setText("Ссылочка на ТГ").setUrl("https://t.me/xm1nya_pr"));
-                rowsInline.add(rowInline);
-                markupInline.setKeyboard(rowsInline);
-                sendMessage.setReplyMarkup(markupInline);
             }
             }
 
@@ -98,7 +81,6 @@ public class MyBot extends TelegramLongPollingBot {
 
             replyKeyboardMarkup.setKeyboard(keyboardRowList);
             sendMessage.setReplyMarkup(replyKeyboardMarkup);*/
-    }
 
        /*else if (update.getMessage().getText().equals("Programming joke \uD83D\uDE01"))
         {
