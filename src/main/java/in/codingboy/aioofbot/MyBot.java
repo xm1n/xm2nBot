@@ -88,7 +88,7 @@ public class MyBot extends TelegramLongPollingBot {
             catch (TelegramApiException e) {
                 e.printStackTrace();
                 }
-            if(update.getMessage().getText().equals("")) || (update.getMessage().getText().equals("Спасибо")){
+            if(update.getMessage().getText().equals("") || update.getMessage().getText().equals("Спасибо")){
 
                 sendMessage.setText(seemessage);
                 try {
