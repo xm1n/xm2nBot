@@ -35,7 +35,7 @@ public class MyBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         SendMessage sendMessage = new SendMessage();
 
-        if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("Back") || update.getMessage().getText().equals("/start@arrayindexoutofboundbot"))
+        if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("Back") || update.getMessage().getText().equals("/start@xm1nBot"))
         {
             ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
             List <KeyboardRow> keyboardRowList = new ArrayList<>();
