@@ -29,14 +29,14 @@ public class MyBot extends TelegramLongPollingBot {
             "Счастья, здоровья, успехов в твоих начинаниях\n" +
             "Знай, что ты прекрасна!\uFE0F :)\n";
     static String seemessage =
-            "Я не смогу прочесть ваше сообщение, поэтому напишите Кирюше в ЛС \uFE0F";
+            "Я не смогу прочесть ваше сообщение, поэтому напишите Кирюше в ЛС\u2764";
     JSONParser parser =  new JSONParser();
     @Override
     public void onUpdateReceived(Update update) {
         SendMessage sendMessage = new SendMessage();
 
         if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("/start@xm1nBot"))
-                sendMessage.setText("Привет "+ update.getMessage().getFrom().getFirstName() + ",\n\n" +welcomemessage + "\n\n" + seemessage + "@xm1nya_pr");
+                sendMessage.setText("Привет "+ update.getMessage().getFrom().getFirstName() + ",\n\n" +welcomemessage + "\n" + seemessage + "@xm1nya_pr");
             try {
                 sendMessage.setChatId(update.getMessage().getChatId());
                 execute(sendMessage);
