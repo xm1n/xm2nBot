@@ -29,7 +29,7 @@ public class MyBot extends TelegramLongPollingBot {
             "Счастья, здоровья, успехов в твоих начинаниях\n" +
             "Знай, что ты прекрасна! :)\n" +
             "\n\n" +
-            "Мой ТГ: https://t.me/xm1nya_pr";
+            "Мой ТГ: [ТЫК!](https://t.me/xm1nya_pr)";
     static String seemessage =
             "Я не смогу прочесть ваше сообщение, поэтому напишите Кирюше в ЛС \uFE0F";
     JSONParser parser =  new JSONParser();
