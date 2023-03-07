@@ -44,7 +44,7 @@ public class MyBot extends TelegramLongPollingBot {
             catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-        if(update.getMessage().getText().equals("") || update.getMessage().getText().equals("Спасибо")) {
+        if(update.getMessage().getText().equals("")) {
                 sendMessage.setText(seemessage);
                 try {
                     sendMessage.setChatId(update.getMessage().getChatId());
@@ -52,16 +52,17 @@ public class MyBot extends TelegramLongPollingBot {
                 } catch (TelegramApiException e) {
                     e.printStackTrace();
                 }
+            {
+                InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
+                List < List < InlineKeyboardButton >> rowsInline = new ArrayList < > ();
+                List < InlineKeyboardButton > rowInline = new ArrayList < > ();
+                rowInline.add(new InlineKeyboardButton().setText("Ссылочка на ТГ").setUrl("https://t.me/xm1nya_pr"));
+                rowsInline.add(rowInline);
+                markupInline.setKeyboard(rowsInline);
+                sendMessage.setReplyMarkup(markupInline);
             }
-        {
-            InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
-            List < List < InlineKeyboardButton >> rowsInline = new ArrayList < > ();
-            List < InlineKeyboardButton > rowInline = new ArrayList < > ();
-            rowInline.add(new InlineKeyboardButton().setText("Ссылочка на ТГ").setUrl("https://t.me/xm1nya_pr"));
-            rowsInline.add(rowInline);
-            markupInline.setKeyboard(rowsInline);
-            sendMessage.setReplyMarkup(markupInline);
-        }
+            }
+
 
             /*ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
             List <KeyboardRow> keyboardRowList = new ArrayList<>();
