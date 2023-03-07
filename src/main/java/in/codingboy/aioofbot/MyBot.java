@@ -30,6 +30,8 @@ public class MyBot extends TelegramLongPollingBot {
             "Знай, что ты прекрасна! :)\n" +
             "\n\n" +
             "Мой ТГ: https://t.me/xm1nya_pr";
+    static String seemessage =
+            "Я не смогу прочесть ваше сообщение, поэтому напишите Кирюше в ЛС \uFE0F";
     JSONParser parser =  new JSONParser();
     @Override
     public void onUpdateReceived(Update update) {
@@ -75,7 +77,16 @@ public class MyBot extends TelegramLongPollingBot {
             try {
                 sendMessage.setChatId(update.getMessage().getChatId());
                 execute(sendMessage);
-            } catch (TelegramApiException e) {
+            }
+            catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+            sendMessage.setText(seemessage);
+            try {
+                sendMessage.setChatId(update.getMessage().getChatId());
+                execute(sendMessage);
+            }
+            catch (TelegramApiException e) {
                 e.printStackTrace();
             }
         }
