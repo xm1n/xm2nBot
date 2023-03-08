@@ -44,7 +44,7 @@ public class MyBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
-    }
+
 
 
             /*ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
@@ -340,7 +340,7 @@ public class MyBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
-
+*/
         else
         {
             sendMessage.setText("Hii "+ update.getMessage().getFrom().getFirstName() + " \uD83D\uDE4B\u200D♂️,\n\n" +welcomemessage);
@@ -351,7 +351,7 @@ public class MyBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
-    }*/
+    }
     private void concateNumbers(String country, String total_cases, String total_recovered, String total_deaths) {
         sendCoronaDataNumbers=sendCoronaDataNumbers+country+total_cases+total_recovered+total_deaths+"\n";
         System.out.println(sendCoronaDataNumbers);
