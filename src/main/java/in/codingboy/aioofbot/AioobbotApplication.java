@@ -48,11 +48,7 @@ public class AioobbotApplication {
                 Thread.sleep(60000); //
 
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
 
