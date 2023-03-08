@@ -35,16 +35,16 @@ public class MyBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         SendMessage sendMessage = new SendMessage();
 
-        if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("/start@xm1nBot"))
-                sendMessage.setText("Привет "+ update.getMessage().getFrom().getFirstName() + ",\n\n" +welcomemessage + "\n" + seemessage + "@xm1nya_pr");
+        if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("/start@xm1nBot")) {
+            sendMessage.setText("Привет " + update.getMessage().getFrom().getFirstName() + ",\n\n" + welcomemessage + "\n" + seemessage + "@xm1nya_pr");
             try {
                 sendMessage.setChatId(update.getMessage().getChatId());
                 execute(sendMessage);
-            }
-            catch (TelegramApiException e) {
+            } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-            }
+        }
+    }
 
 
             /*ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
