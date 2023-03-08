@@ -27,24 +27,41 @@ public class MyBot extends TelegramLongPollingBot {
     static String welcomemessage =
             "C 8 марта!\n\n" +
             "Счастья, здоровья, успехов в твоих начинаниях\n" +
-            "Знай, что ты прекрасна!\uFE0F :)\n";
+            "Знай, что ты прекрасна! :)\n";
     static String seemessage =
-            "Я не смогу прочесть ваше сообщение, поэтому напишите Кирюше в ЛС\u2764";
+            "Я не смогу прочесть ваше сообщение, поэтому напишите Кирюше в ЛС \uFE0F";
     JSONParser parser =  new JSONParser();
     @Override
     public void onUpdateReceived(Update update) {
         SendMessage sendMessage = new SendMessage();
 
-        if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("/start@xm1nBot") || update.getMessage().getText().equals("")) {
-            sendMessage.setText("Привет " + update.getMessage().getFrom().getFirstName() + ",\n\n" + welcomemessage + "\n" + seemessage + "@xm1nya_pr");
+        if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("/start@xm1nBot"))
+                sendMessage.setText("Привет "+ update.getMessage().getFrom().getFirstName() + ",\n\n" +welcomemessage);
             try {
                 sendMessage.setChatId(update.getMessage().getChatId());
                 execute(sendMessage);
-            } catch (TelegramApiException e) {
+            }
+            catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-        }
-
+        if(update.getMessage().getText().equals("")) {
+                sendMessage.setText(seemessage);
+                try {
+                    sendMessage.setChatId(update.getMessage().getChatId());
+                    execute(sendMessage);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+            {
+                InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
+                List < List < InlineKeyboardButton >> rowsInline = new ArrayList < > ();
+                List < InlineKeyboardButton > rowInline = new ArrayList < > ();
+                rowInline.add(new InlineKeyboardButton().setText("Ссылочка на ТГ").setUrl("https://t.me/xm1nya_pr"));
+                rowsInline.add(rowInline);
+                markupInline.setKeyboard(rowsInline);
+                sendMessage.setReplyMarkup(markupInline);
+            }
+            }
 
 
             /*ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
@@ -81,6 +98,7 @@ public class MyBot extends TelegramLongPollingBot {
 
             replyKeyboardMarkup.setKeyboard(keyboardRowList);
             sendMessage.setReplyMarkup(replyKeyboardMarkup);*/
+    }
 
        /*else if (update.getMessage().getText().equals("Programming joke \uD83D\uDE01"))
         {
@@ -340,7 +358,7 @@ public class MyBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
-*/
+
         else
         {
             sendMessage.setText("Hii "+ update.getMessage().getFrom().getFirstName() + " \uD83D\uDE4B\u200D♂️,\n\n" +welcomemessage);
@@ -351,7 +369,7 @@ public class MyBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
     private void concateNumbers(String country, String total_cases, String total_recovered, String total_deaths) {
         sendCoronaDataNumbers=sendCoronaDataNumbers+country+total_cases+total_recovered+total_deaths+"\n";
         System.out.println(sendCoronaDataNumbers);
@@ -359,7 +377,7 @@ public class MyBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "xm2nBot";
+        return "xm1nBot";
     }
     @Override
     public String getBotToken() {
