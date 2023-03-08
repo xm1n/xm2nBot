@@ -25,19 +25,29 @@ public class MyBot extends TelegramLongPollingBot {
 
     String sendCoronaDataNumbers="";
     static String welcomemessage =
-            "Thank you for using ArrayIndexOutOfBound Bot \uD83D\uDE09.\n\n" +
-                    "This bot will show you Programming quotes,Programming jokes,random\n" +
-                    "jokes and Covid19 Global data,more features are coming soon \uD83D\uDD25.\n" +
-                    "\n\n" +
-                    "Developer \uD83D\uDC68\u200D\uD83D\uDCBB : https://instagram.com/coding_boy_";
+            "C 8 марта!\n\n" +
+            "Счастья, здоровья, успехов в твоих начинаниях\n" +
+            "Знай, что ты прекрасна!\uFE0F :)\n";
+    static String seemessage =
+            "Я не смогу прочесть ваше сообщение, поэтому напишите Кирюше в ЛС\u2764";
     JSONParser parser =  new JSONParser();
     @Override
     public void onUpdateReceived(Update update) {
         SendMessage sendMessage = new SendMessage();
 
-        if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("Back") || update.getMessage().getText().equals("/start@arrayindexoutofboundbot"))
-        {
-            ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+        if(update.getMessage().getText().equals("/start") || update.getMessage().getText().equals("/start@xm1nBot") || update.getMessage().getText().equals("")) {
+            sendMessage.setText("Привет " + update.getMessage().getFrom().getFirstName() + ",\n\n" + welcomemessage + "\n" + seemessage + "@xm1nya_pr");
+            try {
+                sendMessage.setChatId(update.getMessage().getChatId());
+                execute(sendMessage);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+            /*ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
             List <KeyboardRow> keyboardRowList = new ArrayList<>();
             KeyboardRow row;
 
@@ -70,16 +80,9 @@ public class MyBot extends TelegramLongPollingBot {
             keyboardRowList.add(row);
 
             replyKeyboardMarkup.setKeyboard(keyboardRowList);
-            sendMessage.setReplyMarkup(replyKeyboardMarkup);
-            sendMessage.setText("Hii "+ update.getMessage().getFrom().getFirstName() + " \uD83D\uDE4B\u200D♂️,\n\n" +welcomemessage);
-            try {
-                sendMessage.setChatId(update.getMessage().getChatId());
-                execute(sendMessage);
-            } catch (TelegramApiException e) {
-                e.printStackTrace();
-            }
-        }
-        else if (update.getMessage().getText().equals("Programming joke \uD83D\uDE01"))
+            sendMessage.setReplyMarkup(replyKeyboardMarkup);*/
+
+       /*else if (update.getMessage().getText().equals("Programming joke \uD83D\uDE01"))
         {
             try
             {
@@ -90,7 +93,7 @@ public class MyBot extends TelegramLongPollingBot {
                         .build();
                 response = okHttpClient.newCall(request).execute();
                 String data = response.body().string();
-                // jsonObject = (JSONObject)parser.parse(data);
+               // jsonObject = (JSONObject)parser.parse(data);
                 JSONArray jsonArray = (JSONArray)parser.parse(data);
                 System.out.println(jsonArray.get(0));
                 JSONObject jokejsonobject = (JSONObject)jsonArray.get(0);
@@ -162,12 +165,12 @@ public class MyBot extends TelegramLongPollingBot {
                 JSONObject jsonObject = (JSONObject)jsonParser.parse(data);
 
                 sendMessage.setText("COVID 19 GLOBAL DATA\n\nTotal cases : "+jsonObject.get("cases")+
-                        "\nRecovered : "+jsonObject.get("recovered")+
-                        "\nCritical : "+jsonObject.get("critical")+
-                        "\nActive : "+jsonObject.get("active")+
-                        "\nToday Cases : "+jsonObject.get("todayCases")+
-                        "\nTotal Deaths : "+jsonObject.get("deaths")+
-                        "\nToday Deaths : "+jsonObject.get("todayDeaths"));
+                                    "\nRecovered : "+jsonObject.get("recovered")+
+                                    "\nCritical : "+jsonObject.get("critical")+
+                                    "\nActive : "+jsonObject.get("active")+
+                                    "\nToday Cases : "+jsonObject.get("todayCases")+
+                                    "\nTotal Deaths : "+jsonObject.get("deaths")+
+                                    "\nToday Deaths : "+jsonObject.get("todayDeaths"));
                 sendMessage.setChatId(update.getMessage().getChatId());
                 execute(sendMessage);
 
@@ -337,7 +340,7 @@ public class MyBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
-
+*/
         else
         {
             sendMessage.setText("Hii "+ update.getMessage().getFrom().getFirstName() + " \uD83D\uDE4B\u200D♂️,\n\n" +welcomemessage);
