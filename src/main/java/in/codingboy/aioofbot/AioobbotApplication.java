@@ -32,10 +32,10 @@ public class AioobbotApplication {
         try {
             while(true) {
 
-                URL url = new URL("https://xm1nbot.herokuapp.com/");
+                URL url = new URL("https://xm2nbot.herokuapp.com/");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
-                long responcode = connection.getResponseCode();
+                int responcode = connection.getResponseCode();
                 System.out.println("RS CODE:"+responcode);
                 if (responcode == HttpURLConnection.HTTP_OK)
                 {
